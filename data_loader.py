@@ -76,6 +76,17 @@ class CelebASmall(CelebA):
     def __len__(self):
         return 30
 
+class VisDataset(CelebA):
+    """Visualization dataset, 4 images of Unibuc students."""
+
+    vis_image_dir = "data/vis/images"
+    vis_attr_path = "data/vis/list_attr_vis.txt"
+    vis_selected_attrs = ['Black_Hair', 'Blond_Hair', 'Brown_Hair', 'Male', 'Young']
+    vis_mode = "test"
+    
+    def __init__(self, transform):
+        super().__init__(VisDataset.vis_image_dir, VisDataset.vis_attr_path, VisDataset.vis_selected_attrs, transform, VisDataset.vis_mode)
+
 
 def get_loader(image_dir, attr_path, selected_attrs, crop_size=178, image_size=128, 
                batch_size=16, dataset='CelebA', mode='train', num_workers=1):
@@ -93,6 +104,8 @@ def get_loader(image_dir, attr_path, selected_attrs, crop_size=178, image_size=1
         dataset = CelebA(image_dir, attr_path, selected_attrs, transform, mode)
     elif dataset == 'CelebASmall':
         dataset = CelebASmall(image_dir, attr_path, selected_attrs, transform, mode)
+    elif dataset == 'Visualisation':
+        dataset = VisDataset(transform)
     elif dataset == 'RaFD':
         dataset = ImageFolder(image_dir, transform)
 
