@@ -1,0 +1,6 @@
+__pycache__/
+.ipynb_checkpoints/
+
+data/
+stargan_celeba_128/
+stargan_celeba_256/
