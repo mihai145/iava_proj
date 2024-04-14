@@ -286,9 +286,10 @@ class CustomSolver():
                 vis_dataloader = get_loader(self.vis_dataset, self.vis_batch_size, "test", num_workers=2)
                 with torch.no_grad():
                     for j, x_vis in enumerate(vis_dataloader):
+                        x_vis = x_vis.to(self.device)
                         x_fake_list = [x_vis]
                         for target in self.generate_all_targets():
-                            target = torch.stack([target for _ in range(x_vis.size(0))])
+                            target = torch.stack([target for _ in range(x_vis.size(0))]).to(self.device)
                             x_fake_list.append(self.G(x_vis, target))
                         x_concat = torch.cat(x_fake_list, dim=3)
 
