@@ -52,7 +52,7 @@ class GenericDataset(Dataset):
                 idx = self.attr2idx[attr_name]
                 label.append(values[idx] == '1')
 
-            if (i+1) <= max(1, cnt_samples // 50):
+            if (i+1) <= cnt_samples // 50:
                 self.test_dataset.append([self.path + "/images/" + filename, label])
             else:
                 self.train_dataset.append([self.path + "/images/" + filename, label])
