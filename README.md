@@ -25,3 +25,5 @@ Visualization datasets (used for tracking progress / debugging):
 <br>
 
 Preffered image size: 178*218.
+
+Images that have a different spatial shape can be resized using [resize_v1.ipynb](https://github.com/mihai145/iava_proj/blob/main/resize_v1.ipynb) (without face detection) or [resize_v2.ipynb](https://github.com/mihai145/iava_proj/blob/main/resize_v2.ipynb) (with face detection).
